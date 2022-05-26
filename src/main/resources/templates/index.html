@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Fruit Store</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} "/>
+    
+</head>
+<body>
+
+	<nav class="navbar navbar-dark bg-dark">
+		<span class="navbar-brand mb-0 h1">Fruits Shop</span>
+	</nav>
+	<div class="ml-5">
+		<div class="mt-4">
+			<div class="row">
+				<h5>Welcome Fruit Store, please load your files .. !</h5>
+			</div>
+		</div>
+		<div class="mt-4">
+			<div class="row">
+				<form method="POST" enctype="multipart/form-data" th:action="@{/fruit/calculate_bill}">
+					<table class="table">
+						<tr>
+							<td>Products prices:</td>
+							<td><input type="file" name="prod_price_file" /></td>
+						</tr>
+						<tr>
+							<td>Purchased products:</td>
+							<td><input type="file" name="prod_quan_file" /></td>
+						</tr>
+						<tr></tr>
+						<tr>
+							<td><input type="submit" value="Get resumen" /></td>
+							<td></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  	<script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
+  	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+  	<!-- CDN SWEETALERT (para los msj de alerta) -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
+	
+</body>
+</html>
+
+
