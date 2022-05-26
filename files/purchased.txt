@@ -1,4 +1,4 @@
 PRODUCT, QUANTITY
-Pear,3
+Pear,6
 Orange, 25
 Apple, 12

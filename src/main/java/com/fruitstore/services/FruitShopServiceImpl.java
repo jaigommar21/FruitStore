@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.fruitstore.entities.ProductItem;
 import com.fruitstore.entities.ProductOrder;
+import com.fruitstore.rules.ApplePromotion;
+import com.fruitstore.rules.PearPromotion;
 
 //import com.asaitec.exam.shop.model.Offer;
 //import com.asaitec.exam.shop.model.ProductBill;
@@ -35,9 +37,18 @@ public class FruitShopServiceImpl implements FruitShopService {
 		
 		logger.info("Order ===> " + order.toString());
 
+		
+		order.calculatePriceList();
+		
+		logger.info("PriceList ===> " + order.getPriceList());
+		
 	
-	
-	
+		// Apply Orange promotion
+		order.applyPromotion(new ApplePromotion());
+		
+		// Apply Pear promotion
+		order.applyPromotion(new PearPromotion());
+		
 	}
 
 	
