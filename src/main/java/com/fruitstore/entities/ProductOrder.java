@@ -1,6 +1,6 @@
 package com.fruitstore.entities;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,6 +16,7 @@ public class ProductOrder {
 
 	Double priceFinal = null;
 
+	List<String> promotionApply = new ArrayList<String>();
 	
 	public void setItems(List<ProductItem> items) {
 		this.items = items;
@@ -49,8 +50,11 @@ public class ProductOrder {
 	
 	public void applyPromotion(Promotion promotion) {
 		
-		double discount = promotion.execute(items);
+		PromotionItem item = promotion.execute(items);
 	
+		double  discount = item.getDiscount();
+		promotionApply.add(item.getMessage());
+		
 		logger.info("Discount ==> " + discount);
 		
 		if( priceFinal == null) 
@@ -61,9 +65,38 @@ public class ProductOrder {
 		logger.info("PriceList ==> " + priceList);
 		logger.info("PriceFinal ==> " + priceFinal);
 
-		
-		
 	}
+
+
+	public Double getPriceFinal() {
+		return priceFinal;
+	}
+
+
+	public void setPriceFinal(Double priceFinal) {
+		this.priceFinal = priceFinal;
+	}
+
+
+	public List<String> getPromotionApply() {
+		return promotionApply;
+	}
+
+
+	public void setPromotionApply(List<String> promotionApply) {
+		this.promotionApply = promotionApply;
+	}
+
+
+	public List<ProductItem> getItems() {
+		return items;
+	}
+
+
+	public void setPriceList(Double priceList) {
+		this.priceList = priceList;
+	}
+	
 	
 	
 }

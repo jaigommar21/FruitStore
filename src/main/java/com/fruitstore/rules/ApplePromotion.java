@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.fruitstore.entities.ProductItem;
 import com.fruitstore.entities.ProductOrder;
+import com.fruitstore.entities.PromotionItem;
 
 /**
  * 
@@ -21,9 +22,10 @@ public class ApplePromotion implements Promotion {
 	private Logger logger = LoggerFactory.getLogger(ProductOrder.class);
 
 	@Override
-	public double execute(List<ProductItem> items) {
+	public PromotionItem execute(List<ProductItem> items) {
 		// TODO Auto-generated method stub
 
+		PromotionItem promoApply = new PromotionItem();
 		double discount = 0.0;
 
 		for (ProductItem productItem : items) {
@@ -34,12 +36,15 @@ public class ApplePromotion implements Promotion {
 				discount = ((int) (productItem.getQuantity() / 3)) * productItem.getPrice();
 				logger.info("Apple quantity = " + productItem.getQuantity());
 				logger.info("Apple discount = " + discount);
+				promoApply.setMessage("Apple discount = " + discount + " for Apple quantity = " + productItem.getQuantity());
 
 			}
 
 		}
 
-		return discount;
-
+		promoApply.setDiscount(discount);		
+		
+		return promoApply;
+		
 	}
 }

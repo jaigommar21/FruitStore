@@ -3,6 +3,7 @@ package com.fruitstore.rules;
 import java.util.List;
 
 import com.fruitstore.entities.ProductItem;
+import com.fruitstore.entities.PromotionItem;
 
 public interface Promotion {
 
@@ -11,6 +12,6 @@ public interface Promotion {
 	static String ORANGE_NAME = "Orange";
 	
 	
-	double execute(List<ProductItem> items);
+	PromotionItem execute(List<ProductItem> items);
 
 }

@@ -2,8 +2,10 @@ package com.fruitstore.services;
 
 import java.util.Map;
 
+import com.fruitstore.entities.ProductOrder;
+
 public interface FruitShopService {
 
-	void calculateBill(Map<String, String> prodsPriceRaw, Map<String, String> prodsQuantityRaw);
+	ProductOrder calculateBill(Map<String, String> prodsPriceRaw, Map<String, String> prodsQuantityRaw);
 
 }

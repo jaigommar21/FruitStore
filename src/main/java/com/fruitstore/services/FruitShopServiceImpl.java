@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.fruitstore.entities.ProductItem;
 import com.fruitstore.entities.ProductOrder;
 import com.fruitstore.rules.ApplePromotion;
+import com.fruitstore.rules.OrangePromotion;
 import com.fruitstore.rules.PearPromotion;
 
 //import com.asaitec.exam.shop.model.Offer;
@@ -24,7 +25,7 @@ public class FruitShopServiceImpl implements FruitShopService {
 	private Logger logger = LoggerFactory.getLogger(FruitShopServiceImpl.class);
 	
 	@Override
-	public void calculateBill(Map<String, String> prodsPriceRaw, Map<String, String> prodsQuantityRaw) {
+	public ProductOrder calculateBill(Map<String, String> prodsPriceRaw, Map<String, String> prodsQuantityRaw) {
 		// TODO Auto-generated method stub
 		
 		logger.info("call calculateBill() ");
@@ -46,9 +47,13 @@ public class FruitShopServiceImpl implements FruitShopService {
 		// Apply Orange promotion
 		order.applyPromotion(new ApplePromotion());
 		
+		// Apply Orange promotion
+		order.applyPromotion(new OrangePromotion());
+
 		// Apply Pear promotion
 		order.applyPromotion(new PearPromotion());
 		
+		return order;
 	}
 
 	

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fruitstore.entities.ProductItem;
+import com.fruitstore.entities.ProductOrder;
 import com.fruitstore.services.FruitShopService;
 import com.fruitstore.utils.FileUtils;
 
@@ -65,12 +67,26 @@ public class FruitShopController {
 			
 		}
 		
-		fruitShopService.calculateBill(prodsPriceRaw,prodsQuantityRaw);
-		
-		
-		
-		
+		ProductOrder order = fruitShopService.calculateBill(prodsPriceRaw,prodsQuantityRaw);
 
+		logger.info(" ----------- THE BILL ----------------");
+
+		
+		for (ProductItem prod : order.getItems()) {
+			logger.info("Product=" + prod.getName() + "; Quantity = " + prod.getQuantity()) ;
+		}
+
+		logger.info("DISCOUNT >>>>>");
+		
+		for (String string : order.getPromotionApply()) {
+			logger.info("" + string) ;
+		}
+		
+		logger.info("Price List " + order.getPriceList()) ;
+		logger.info("Price with Discount " + order.getPriceFinal()) ;
+		
+		
+		
 		return "bill";
 	}
 	
