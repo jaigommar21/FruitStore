@@ -1,14 +1,14 @@
-package com.fruitstore.entities;
+package com.fruitshop.entities;
 
 public class PromotionItem {
 
-	private String message;
+	private String productName;
 	private double discount;
-	public String getMessage() {
-		return message;
+	public String getProductName() {
+		return productName;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public void setProductName(String name) {
+		this.productName = name;
 	}
 	public double getDiscount() {
 		return discount;

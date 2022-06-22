@@ -8,8 +8,8 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.fruitstore</groupId>
-	<artifactId>FruitStore</artifactId>
+	<groupId>com.fruitshop</groupId>
+	<artifactId>FruitShop</artifactId>
 	<version>0.0.1</version>
 	<name>FruitStore</name>
 	<description>Demo project for Spring Boot</description>
@@ -87,7 +87,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>fruitstore</finalName>
+		<finalName>fruitshop</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

@@ -1,9 +1,9 @@
-package com.fruitstore.rules;
+package com.fruitshop.rules;
 
 import java.util.List;
 
-import com.fruitstore.entities.ProductItem;
-import com.fruitstore.entities.PromotionItem;
+import com.fruitshop.entities.ProductItem;
+import com.fruitshop.entities.PromotionItem;
 
 public interface Promotion {
 

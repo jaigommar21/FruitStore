@@ -1,4 +1,4 @@
-package com.fruitstore.entities;
+package com.fruitshop.entities;
 
 public class ProductItem {
 
@@ -42,6 +42,12 @@ public class ProductItem {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	public double getTotalPrice() {
+		return this.price * this.quantity;
+	}
+	
+	
 
 	@Override
 	public String toString() {

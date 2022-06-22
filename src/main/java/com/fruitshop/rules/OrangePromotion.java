@@ -1,13 +1,13 @@
-package com.fruitstore.rules;
+package com.fruitshop.rules;
 
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fruitstore.entities.ProductItem;
-import com.fruitstore.entities.ProductOrder;
-import com.fruitstore.entities.PromotionItem;
+import com.fruitshop.entities.ProductItem;
+import com.fruitshop.entities.ProductOrder;
+import com.fruitshop.entities.PromotionItem;
 
 /**
  * 
@@ -54,7 +54,7 @@ public class OrangePromotion implements Promotion {
 				discountOrangeFree = orangeFree*productItem.getPrice();
 				logger.info("Orange free discount = " + discountOrangeFree);
 
-				promoApply.setMessage("Orange discount = " + discountOrangeFree + " for Orange free = " + orangeFree);
+				promoApply.setProductName("Orange discount = " + discountOrangeFree + " Euros" + " for Orange free = " + orangeFree);
 
 			}
 
@@ -62,6 +62,7 @@ public class OrangePromotion implements Promotion {
 		
 		discount = discountOrangeFree;
 		
+		promoApply.setProductName(ORANGE_NAME);
 		promoApply.setDiscount(discount);
 		
 		return promoApply;

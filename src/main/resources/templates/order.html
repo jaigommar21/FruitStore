@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Fruit Store</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} "/>
+    
+</head>
+<body>
+
+	<nav class="navbar navbar-dark bg-dark">
+		<span class="navbar-brand mb-0 h1">Fruits Shop</span>
+	</nav>
+	<div class="ml-5">
+		<div class="mt-4">
+			<div class="row">
+				<h5>The Order</h5>
+			</div>
+		</div>
+		
+		<div class="card-body">
+		
+            	<table class="table table-borderless table-striped mb-0">
+		            <thead>
+		                <tr>
+		                    <th>Product Name</th>
+							<th>Unit Price</th>
+							<th>Quantity</th>
+							<th>Total Price</th>
+						</tr>
+		            </thead>
+		            <tbody>
+		                <tr th:each="product : ${order.items}">
+		                    <td th:text="${product.name}"/>
+		                    <td th:text="${product.price} + '&nbsp;' + Euros"/>
+		                    <td th:text="${product.quantity}"/>
+		                    <td th:text="${product.totalPrice} + '&nbsp;' + Euros"/>
+		                </tr>
+		            </tbody>
+		        </table>
+		        
+		       <div class="mt-4">
+					<div class="row">
+						<h6>Price List : [(${order.priceList})] Euros</h6>
+					</div>
+				</div>
+    	
+    			<table class="table table-borderless table-striped mb-0">
+		            <thead>
+		                <tr>
+		                    <th>Product Name</th>
+		                    <th>Discount</th>
+		                 </tr>
+		            </thead>
+		            <tbody>
+		                <tr th:each="product : ${order.promotionsApply}">
+		                    <td th:text="${product.productName}"/>
+		                    <td th:text="${product.discount} + '&nbsp;' + Euros"/>
+		                 </tr>
+		            </tbody>
+		        </table>
+		
+
+		      <div class="mt-4">
+					<div class="row">
+						<h6>Final Price : [(${order.priceFinal})] Euros</h6>
+					</div>
+			  </div>
+		</div>
+	</div>
+
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  	<script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
+  	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+  	<!-- CDN SWEETALERT (para los msj de alerta) -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
+	
+</body>
+</html>
+
+

@@ -1,4 +1,4 @@
-package com.fruitstore.services;
+package com.fruitshop.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.fruitstore.entities.ProductItem;
-import com.fruitstore.entities.ProductOrder;
-import com.fruitstore.rules.ApplePromotion;
-import com.fruitstore.rules.OrangePromotion;
-import com.fruitstore.rules.PearPromotion;
+import com.fruitshop.entities.ProductItem;
+import com.fruitshop.entities.ProductOrder;
+import com.fruitshop.rules.ApplePromotion;
+import com.fruitshop.rules.OrangePromotion;
+import com.fruitshop.rules.PearPromotion;
+import com.fruitshop.rules.Promotion;
 
-//import com.asaitec.exam.shop.model.Offer;
-//import com.asaitec.exam.shop.model.ProductBill;
 
 @Service
 public class FruitShopServiceImpl implements FruitShopService {
@@ -30,20 +29,25 @@ public class FruitShopServiceImpl implements FruitShopService {
 		
 		logger.info("call calculateBill() ");
 
-
 		List<ProductItem> items = getOrder(prodsPriceRaw, prodsQuantityRaw);
 		
 		ProductOrder order = new ProductOrder();
 		order.setItems(items);
 		
 		logger.info("Order ===> " + order.toString());
-
 		
 		order.calculatePriceList();
-		
 		logger.info("PriceList ===> " + order.getPriceList());
 		
-	
+		Promotion[] promotions = {  new ApplePromotion(), 
+									new OrangePromotion(),
+									new PearPromotion() };
+
+		for (Promotion promotion : promotions) {
+			order.applyPromotion(promotion);	
+		}
+		
+		/*
 		// Apply Orange promotion
 		order.applyPromotion(new ApplePromotion());
 		
@@ -52,6 +56,7 @@ public class FruitShopServiceImpl implements FruitShopService {
 
 		// Apply Pear promotion
 		order.applyPromotion(new PearPromotion());
+		*/
 		
 		return order;
 	}
@@ -61,6 +66,8 @@ public class FruitShopServiceImpl implements FruitShopService {
 	private List<ProductItem>  getOrder(Map<String, String> prodsPriceRaw, Map<String, String> prodsQuantityRaw) {
 
 		List<ProductItem> items = new ArrayList<ProductItem>();
+		
+		
 		
 		for (String nameProduct :prodsPriceRaw.keySet()) {
 			

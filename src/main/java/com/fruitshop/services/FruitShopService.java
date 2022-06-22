@@ -1,8 +1,8 @@
-package com.fruitstore.services;
+package com.fruitshop.services;
 
 import java.util.Map;
 
-import com.fruitstore.entities.ProductOrder;
+import com.fruitshop.entities.ProductOrder;
 
 public interface FruitShopService {
 

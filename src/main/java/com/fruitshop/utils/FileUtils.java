@@ -1,4 +1,4 @@
-package com.fruitstore.utils;
+package com.fruitshop.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fruitstore.controllers.FruitShopController;
+import com.fruitshop.controllers.FruitShopController;
 
 public class FileUtils {
 

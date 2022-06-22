@@ -1,13 +1,13 @@
-package com.fruitstore.rules;
+package com.fruitshop.rules;
 
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fruitstore.entities.ProductItem;
-import com.fruitstore.entities.ProductOrder;
-import com.fruitstore.entities.PromotionItem;
+import com.fruitshop.entities.ProductItem;
+import com.fruitshop.entities.ProductOrder;
+import com.fruitshop.entities.PromotionItem;
 
 /**
  * 
@@ -35,13 +35,14 @@ public class ApplePromotion implements Promotion {
 				// Buy 3 Apples and pay 2.
 				discount = ((int) (productItem.getQuantity() / 3)) * productItem.getPrice();
 				logger.info("Apple quantity = " + productItem.getQuantity());
-				logger.info("Apple discount = " + discount);
-				promoApply.setMessage("Apple discount = " + discount + " for Apple quantity = " + productItem.getQuantity());
+				logger.info("Apple discount = " + discount + " Euros");
+				promoApply.setProductName("Apple discount = " + discount + " Euros" + " for Apple quantity = " + productItem.getQuantity());
 
 			}
 
 		}
 
+		promoApply.setProductName(APPLE_NAME);
 		promoApply.setDiscount(discount);		
 		
 		return promoApply;
